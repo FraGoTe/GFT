@@ -1,0 +1,58 @@
+<script>
+    var userList = <?php echo $this->userList; ?>;
+</script>
+<div ng-controller="ListController">
+    
+    <h3>Github Rank</h3>
+    <button ng-click="save()" class="btn btn-success">Save</button>
+    <button ng-click="reset()" class="btn btn-danger">Clear</button>
+    <br/>
+    <form name="frmRank">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-toggle="modal" data-target="#detail" ng-repeat="user in pUser">
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.name}}</td>
+                    <td>{{ user.email}}</td>
+                    <td>
+                        <select id="sl_{{ user.username }}" 
+                                ng-model="user.rank"
+                                ng-change="setRank(user.rank, '{{user.rank}}')"> 
+                            <option value="" ng-if="isReseted"></option>
+                            <option ng-repeat="item in rank" ng-disabled="item.selected" 
+                                    value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <center>
+        <ul class="pagination">
+            <li>
+                <a href="#" ng-click="pagination(1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#" ng-click="pagination(1)">1</a></li>
+            <li><a href="#" ng-click="pagination(2)">2</a></li>
+            <li><a href="#" ng-click="pagination(3)">3</a></li>
+            <li><a href="#" ng-click="pagination(4)">4</a></li>
+            <li><a href="#" ng-click="pagination(5)">5</a></li>
+            <li>
+                <a href="#" ng-click="pagination(5)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </center>
+
+</div>

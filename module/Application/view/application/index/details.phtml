@@ -1,0 +1,30 @@
+<div ng-controller="DetailsController">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="gu" class="sr-only">Github User</label>
+            <input ng-model="username" id="gu" name="gu" class="form-control" placeholder="username">
+        </div>
+        <button ng-click="find()" class="btn btn-default">Find User</button>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <colgroup>
+                    <col class="col-xs-1">
+                    <col class="col-xs-7">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Nro</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users | orderBy:'-cnt'">
+                        <td>{{ user.cnt }}</td>
+                        <td><pre>{{ user.data }}</pre></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

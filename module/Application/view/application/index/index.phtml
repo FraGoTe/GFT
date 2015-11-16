@@ -1,0 +1,42 @@
+<div ng-controller="IndexController">
+    <h3>Github 10 users</h3>
+    <button class="btn btn-primary" ng-click="getUsers();">Refresh</button>
+    <br/>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>UserName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-toggle="modal" data-target="#detail" class="pointer" ng-repeat="user in users" ng-click="getUser(user.username)">
+                <td><img ng-src="{{ user.avatar_url }}" width="50" ></td>
+                <td>{{ user.username }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="Details">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">User Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-4">
+                        <img ng-src="{{ avatar_url }}" width="150" >
+                    </div>
+                    <div class="col-sm-8">
+                        <p><b>Name:</b> {{ username }}</p>
+                        <p><b>Email:</b> {{ email }}</p>
+                    </div>
+                    <br><br><br><br><br><br><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
